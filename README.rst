@@ -63,3 +63,56 @@ After we've ssh'd in.  Let's install django, python mysqldb, mysql server, and m
     sudo aptitude install mysql-server
     sudo aptitude install python-mysqldb
     sudo aptitude install libapache2-mod-wsgi
+
+Setting up wsgi
+---------------
+
+Setting up bare bones django::
+
+    cd /usr/local
+    mkdir www
+    cd www
+    django-admin startproject myproject
+
+
+Make a new sites-available for your new django project::
+
+    sudo vim /etc/apache2/sites-available/myproject.com
+
+
+Write standard sites config::
+
+    <VirtualHost *:80>
+        ServerName myproject.com
+        ServerAlias www.myproject.com
+        WSGIScriptAlias / /usr/local/www/myproject/myproject.wsgi
+    </VirtualHost>
+
+
+
+Make myproject.wsgi file::
+    
+    vim /usr/locale/www/myproject/myproject.wsgi
+
+Write standard myproject.wsgi file::
+
+    import os
+    import sys
+
+    sys.path.append('/usr/local/www/myproject/')
+
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'myproject.settings'
+
+    import django.core.handlers.wsgi
+
+    application = django.core.handlers.wsgi.WSGIHandler()
+
+Start it up
+-----------
+
+Enable the site in apache and reload::
+
+    sudo a2ensite mysite.com
+    sudo /etc/init.d/apache2 reload
+
+ 
