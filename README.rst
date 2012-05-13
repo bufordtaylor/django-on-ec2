@@ -94,7 +94,7 @@ Write standard myproject.wsgi file::
 
     import os
     import sys
-
+    sys.path.append('/usr/local/www')
     sys.path.append('/usr/local/www/myproject/')
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'myproject.settings'
@@ -121,3 +121,13 @@ instance that you've just set up.  Now, with the newly assigned IP, paste
 it in your browser and:
 
     It works!
+
+
+Now would be a good time to set up your DNS with Amazon Route 53. 
+
+Brief Instructions:
+
+1. Click `Create hosted zone`
+2. Login to your registrar and copy the DNS entries Amazon gave you into your DNS nameservers
+3. Back on AWS, click on the hosted zone you just created, click `Create record set` and type *www* into `Name`.  Then make an A type record with a value of the same IP address as your Elastic IP.  Click save.
+4. Wait about 15 seconds
