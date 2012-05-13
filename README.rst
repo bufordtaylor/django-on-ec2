@@ -10,7 +10,7 @@ Choosing EC2 AMI
 ----------------
 
 I went with the latest Ubuntu Hardy image.  I've used it in the past and
-it works fine.
+it works fine::
 
     ami-cb8d61a2
 
@@ -21,8 +21,7 @@ Amazon portal config:
 instance and go through the defaults until you set up your private key.
 3. Choose something meaningful to the server you're building.  Create the
 private keypair (a .pem file), download it, and move it to your **~/.ssh** directory.
-4. For firewall, enable ssh and http access. I usually give it a group
-   name like 'quick-start'
+4. For firewall, enable ssh and http access. I usually give it a group name like 'quick-start'
 4a. For larger apps, you might want to enable more than just ssh and http,
 like mysql access, or smtp for mail service, etc.
 5. Hit launch
@@ -39,7 +38,7 @@ We're ready to start installing things
     minutes for Amazon to boot it up and hand it over for ssh access
 
 
-ssh into your brand new ubuntu box on ec2.
+ssh into your brand new ubuntu box on ec2::
 
     ssh -i ~/.ssh/myprivatefile.pem ubuntu@ec2-##-##-##-###.compute-1.amazonaws.com
 
@@ -54,11 +53,11 @@ If you get a permission error, like this:
     bad permissions: ignore key: /Users/buf/.ssh/myprivatefile.pem
     Permission denied (publickey).m 0644 for '/Users/buf/.ssh/myprivatefile.pem' are too open.
 
-I fixed this with writing the pem rules to 600.
+I fixed this with writing the pem rules to 600::
 
     chmod 600 ~/.ssh/myprivatefile.pem
 
-After we've ssh'd in.  Let's install django, python mysqldb, mysql server, and mod_wsgi
+After we've ssh'd in.  Let's install django, python mysqldb, mysql server, and mod_wsgi::
 
     sudo aptitude install python-django
     sudo aptitude install mysql-server
