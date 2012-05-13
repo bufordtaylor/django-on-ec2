@@ -131,3 +131,56 @@ Brief Instructions:
 2. Login to your registrar and copy the DNS entries Amazon gave you into your DNS nameservers
 3. Back on AWS, click on the hosted zone you just created, click `Create record set` and type *www* into `Name`.  Then make an A type record with a value of the same IP address as your Elastic IP.  Click save.
 4. Wait about 15 seconds
+
+
+(Optional) Upgrade Python
+-------------------------
+
+I'm going to go with Python 2.7.3::
+
+    sudo apt-get install libreadline-dev
+    sudo apt-get install libsqlite3-dev
+    sudo apt-get install libbz2-dev
+    sudo apt-get install libssl-dev
+
+Head on over to `http://www.python.org/` and pick your favorite Python::
+
+    wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2
+    tar -xvjf Python-2.7.3.tar.bz2
+    cd Python-2.7.3.tar.bz2
+    ./configure
+    make -j
+
+If you get an error saying that no compatible C compiler could be found, you can always pick one GCC::
+
+    sudo apt-get install gcc
+
+Also if you don't have make installed::
+
+    sudo apt-get make
+
+After make does it's thing, just need to run::
+
+    sudo make install
+
+which installs Python into /usr/local/bin.  It will add a symlink to /usr/local/bin/Python2.7.3::
+
+    >$ python --version
+    >Python 2.7.3
+
+(Optional) Install some python essentials
+-----------------------------------------
+
+First, you'll need pip.  But in order to get pip, you need either `setuptools` or `distribute`.  I prefer distribute::
+
+    curl -O http://python-distribute.org/distribute_setup.py
+    sudo python distribute_setup.py
+
+And now for pip::
+
+    curl -O http://pypi.python.org/packages/source/p/pip/pip-1.0.tar.gz
+    tar xvfz pip-1.0.tar.gz
+    cd pip-1.0
+    sudo python setup.py install
+
+After that, you're home free. 
