@@ -112,3 +112,12 @@ Enable the site in apache and reload::
     sudo /etc/init.d/apache2 reload
 
  
+Don't forget about your Elastic IPs
+-----------------------------------
+
+Back in the Amazon portal, you'll need to click on `Elastic IPs` and
+allocate a new address.  Then click `associate address` and choose the
+instance that you've just set up.  Now, with the newly assigned IP, paste
+it in your browser and:
+
+    It works!
