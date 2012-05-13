@@ -16,14 +16,10 @@ it works fine::
 
 Amazon portal config:
 
-1. Choose the image and click *launch*  
-2. Go through the wizard, choose *micro*
-instance and go through the defaults until you set up your private key.
-3. Choose something meaningful to the server you're building.  Create the
-private keypair (a .pem file), download it, and move it to your **~/.ssh** directory.
-4. For firewall, enable ssh and http access. I usually give it a group name like 'quick-start'
-4a. For larger apps, you might want to enable more than just ssh and http,
-like mysql access, or smtp for mail service, etc.
+1. Choose the image and click *launch*
+2. Go through the wizard, choose *micro* instance and go through the defaults until you set up your private key.
+3. Choose something meaningful to the server you're building.  Create the private keypair (a .pem file), download it, and move it to your **~/.ssh** directory.
+4. For firewall, enable ssh and http access. I usually give it a group name like 'quick-start' For larger apps, you might want to enable more than just ssh and http, like mysql access, or smtp for mail service, etc.
 5. Hit launch
 
 
@@ -32,7 +28,7 @@ Installing utils
 
 We're ready to start installing things
 
-::
+..
     
     Note that if you just made your instance, you'll have to wait several
     minutes for Amazon to boot it up and hand it over for ssh access
