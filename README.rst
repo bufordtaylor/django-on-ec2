@@ -68,6 +68,8 @@ Setting up bare bones django::
     cd /usr/local
     mkdir www
     cd www
+    sudo apt-get install python-setuptools
+    sudo easy_install --upgrade django
     django-admin startproject myproject
 
 
